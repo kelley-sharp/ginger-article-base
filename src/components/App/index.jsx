@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import NavBar from './NavBar';
-import Articles from './Articles';
-import './App.scss';
+import NavComponent from '../NavComponent/index';
+import Articles from '../Articles/index';
+import './style.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavComponent />
         <Articles />
       </div>
     );
