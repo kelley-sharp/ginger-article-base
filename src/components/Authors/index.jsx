@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import './style.scss';
+import { Link } from '@reach/router';
 
 class Authors extends Component {
   render() {
     return this.props.authors.map(author => {
       return (
         <div>
-          <h2>{author.name}</h2>
-          <h2>{author.number} articles in the last 30 days</h2>
+          <Link to={`/authors/${author.id}`}>
+            <h2>{author.name}</h2>
+          </Link>
+          <p>
+            {author.number}
+            {author.number === 1 ? ' article ' : ' articles '}
+            in the last 30 days.
+          </p>
         </div>
       );
     });
