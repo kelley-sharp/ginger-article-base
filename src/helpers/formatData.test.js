@@ -13,11 +13,21 @@ describe('formatData', () => {
     expect(result[0]).not.toHaveProperty('author');
   });
 
-  it('should trim whitespace from the text fields', async () => {
+  it('should trim whitespace from the summary fields', async () => {
     const result = await formatData(example);
-    expect(result[0]);
+    expect(result[0]).summary[0].not.toBe(' ');
   });
-  it('should add an ID to author objects', () => {});
-  it('should parse date from time and return both separately', () => {});
-  it('should delete unecessary keys');
+
+  it('should add a slugified name as id to author objects', async () => {
+    const result = await formatData(example);
+    expect(result[0]).authors[0].id.toBe(true);
+  });
+
+  it('should only return necessary keys'), aync () => {
+    const result = await formatData(example);
+    expect(result[0]).link.toBe(false);
+    expect(result[0]).updated.toBe(false);
+    expect(result[0]).arxiv:comment.toBe(false);    
+  };
+
 });
