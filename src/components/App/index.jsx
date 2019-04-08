@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import NavComponent from '../NavComponent/index';
-import Articles from '../Articles/index';
-import Authors from '../Authors/index';
-import Article from '../Article/index';
-import Author from '../Author/index';
-import Home from '../Home/index';
+import NavComponent from '../NavComponent';
+import ArticleList from '../ArticleList';
+import AuthorList from '../AuthorList';
+import Article from '../Article';
+import Author from '../Author';
+import Home from '../Home';
 import './style.scss';
 import { Router } from '@reach/router';
 import { getArticles } from '../../services/api';
@@ -14,13 +14,14 @@ class App extends Component {
     super(props);
 
     this.state = {
-      articles: []
+      articles: [],
+      authors: []
     };
   }
 
   async componentDidMount() {
-    const data = await getArticles();
-    console.dir(data);
+    const { articles, authors } = await getArticles();
+    this.setState({ articles, authors });
   }
 
   render() {
@@ -29,8 +30,8 @@ class App extends Component {
         <NavComponent />
         <Router>
           <Home path="/" />
-          <Articles path="/articles" articles={this.state.articles} />
-          <Authors path="/authors" />
+          <ArticleList path="/articles" articles={this.state.articles} />
+          <AuthorList path="/authors" authors={this.state.authors} />
           <Article path="/article" />
           <Author path="/authors/:author" />
         </Router>
