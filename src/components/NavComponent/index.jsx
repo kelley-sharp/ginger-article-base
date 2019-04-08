@@ -1,23 +1,58 @@
 import React, { Component } from 'react';
-import Home from '../Home/index';
 import './style.scss';
+import '../App/style.scss';
 import { Link } from '@reach/router';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
 
 class NavComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     return (
-      <div>
-        <ul className="nav">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="articles">Articles</Link>
-          </li>
-          <li>
-            <Link to="authors">Authors</Link>
-          </li>
-        </ul>
+      <div className="nav">
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">
+            <div className="brand">Article Base</div>
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink>
+                  <Link className="my-link" to="articles">
+                    <div>Articles</div>
+                  </Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link className="my-link" to="authors">
+                    <div>Authors</div>
+                  </Link>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }

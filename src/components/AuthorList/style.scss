@@ -1,0 +1,29 @@
+.author-list-page {
+  display: flex;
+  justify-content: center;
+  margin: 5em;
+  flex-flow: column wrap;
+}
+
+.outer-info-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.inner-info-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.dynamic-field {
+  color: #60bcd4;
+}
+
+.spacing {
+  margin: 0px 15px;
+}
+
+.user-icon {
+  color: #f4ac46;
+  margin-right: 1em;
+}

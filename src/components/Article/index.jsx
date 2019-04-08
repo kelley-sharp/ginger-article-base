@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 import './style.scss';
+import '../App/style.scss';
 
 class Article extends Component {
-  constructor(props) {}
   render() {
+    const { articleId, articles } = this.props;
+    const article = articles.find(a => a.id === articleId);
+    if (!article) return null;
     return (
-      <div>
-        <h2>{this.props.title}</h2>
-        <h3>Summary:</h3>
-        <p>{this.props.summary}</p>
-        <ul>
-          {this.props.authors.map(author => {
+      <div className="article-page">
+        <div className="d-flex align-items-center justify-content-center">
+          <i className="fas fa-book article-icon" />
+          <h2 className="header mb-0">{article.title}</h2>
+        </div>
+        <p className="sub-heading mt-5">Summary:</p>
+        <p>{article.summary}</p>
+        <p className="sub-heading mt-5">Authored by:</p>
+        <ul className="bulleted-list">
+          {article.authors.map(author => {
             return (
-              <li>
-                <h2>{author.name}</h2>
-                <h3>{author.number}</h3>
-              </li>
+              <Link className="my-link" to={`/authors/${author.id}`}>
+                <li>{author.name}</li>
+              </Link>
             );
           })}
         </ul>

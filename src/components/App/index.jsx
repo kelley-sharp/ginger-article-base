@@ -15,25 +15,29 @@ class App extends Component {
 
     this.state = {
       articles: [],
-      authors: []
+      authors: [],
+      authorsObj: {}
     };
   }
 
   async componentDidMount() {
-    const { articles, authors } = await getArticles();
-    this.setState({ articles, authors });
+    const { articles, authors, authorsObj } = await getArticles();
+    this.setState({ articles, authors, authorsObj });
   }
 
   render() {
     return (
       <div className="App">
         <NavComponent />
-        <Router>
+        <Router primary={false}>
           <Home path="/" />
           <ArticleList path="/articles" articles={this.state.articles} />
           <AuthorList path="/authors" authors={this.state.authors} />
-          <Article path="/article" />
-          <Author path="/authors/:author" />
+          <Article path="/articles/:articleId" articles={this.state.articles} />
+          <Author
+            path="/authors/:authorId"
+            authorsObj={this.state.authorsObj}
+          />
         </Router>
       </div>
     );

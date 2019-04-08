@@ -1,5 +1,18 @@
-.nav {
+nav {
+  font-family: 'Alice', serif;
   display: flex;
-  list-style: none;
-  justify-content: space-around;
+  flex: 1;
+}
+
+.brand {
+  color: #f4ac46;
+}
+
+.my-nav-link {
+  color: #60bcd4;
+}
+
+.my-nav-link:hover {
+  text-decoration: none;
+  color: black;
 }

@@ -29,26 +29,35 @@ async function formatData(xmlString) {
     }
     return authors;
   }
+
+  function getArticleId(oldId) {
+    const splitId = oldId.replace(/\./g, '').split('/');
+    const idSuffix = splitId[splitId.length - 1];
+    return idSuffix;
+  }
   //only return necessary keys
   let formattedArticles = [];
   try {
     formattedArticles = articles.map(article => {
-      return {
-        id: article.id,
+      const formattedArticle = {
+        id: getArticleId(article.id),
         title: article.title,
         //leading whitespace
         summary: article.summary.trim(),
-        //change author to authors
-        authors: mapOverAuthors(article.author).map(author => {
-          author.id = slugify(author.name, {
-            lower: true,
-            remove: /[*+~.()'"!:@]/g
-          });
-          mapArticleToAuthor(article, author, authorToArticleMapping);
-          return author;
-        }),
         published: article.published
       };
+
+      //change author to authors
+      formattedArticle.authors = mapOverAuthors(article.author).map(author => {
+        author.id = slugify(author.name, {
+          lower: true,
+          remove: /[*+~.()'"!:@]/g
+        });
+        mapArticleToAuthor(formattedArticle, author, authorToArticleMapping);
+        return author;
+      });
+
+      return formattedArticle;
     });
   } catch (error) {
     console.log({ error });
@@ -81,8 +90,11 @@ async function formatData(xmlString) {
       })
     );
 
-  console.log(sortedAuthors);
-  return { articles: formattedArticles, authors: sortedAuthors };
+  return {
+    articles: formattedArticles,
+    authors: sortedAuthors,
+    authorsObj: authorToArticleMapping
+  };
 }
 
 export default formatData;

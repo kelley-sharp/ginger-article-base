@@ -1,0 +1,15 @@
+.home-page {
+  font-family: 'Alice', serif;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 5em;
+}
+
+.home-icon {
+  font-size: 50px;
+  color: #60bcd4;
+  letter-spacing: 50px;
+  margin-top: 0.25em;
+}
