@@ -1,12 +1,12 @@
 # Article Base
 
-`React.JS` 
+`React.JS` `Reach Router` `Jest/Enzyme` `Bootstrap` 
 
-This project reflects my interest in self-improvement, psychology and mental health. I wanted to know how machine learning was influencing the field and thought it would be great to have these kinds of articles conveniently organized in one place - so why not make my own article base!
+This project reflects my interest in self-improvement, psychology and mental health. I wanted to know how machine learning was influencing the field and thought it would be great to have these kinds of articles conveniently organized in one place - so why not make my own [article base](http://kelley-sharp-article-base.s3-website-us-west-1.amazonaws.com/)!
 
 ## About
 
-Article Base is a collection of articles relating to psychiatry, therapy, data science, or machine learning taken from https://arxiv.org, a repository from Cornell University. It can be browsed by articles or by authors and contains publications from within the last 30 days. Go [here]('http://kelley-sharp-article-base.s3-website-us-west-1.amazonaws.com/') to browse the site.
+Article Base is a collection of articles relating to psychiatry, therapy, data science, or machine learning taken from https://arxiv.org, a repository from Cornell University. It can be browsed by articles or by authors and contains publications from within the last 30 days. Go [here](http://kelley-sharp-article-base.s3-website-us-west-1.amazonaws.com/) to browse the site.
 
 ## Highlights
 
